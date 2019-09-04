@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.mécaniquejeuxprofileperfect.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "E:\\Documents\\UNITY\\mécanique jeux profile perfect\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "mécanique jeux profile perfect [Testing]"
+        }
+      }
+    }
+  ]
+}
