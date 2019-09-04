@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class countdown : MonoBehaviour
 {
     public float timeLeft;
+    private AssetBundle myLoadedAssetBundle;
+    private string[] scenePaths;
+
+   
 
     #region TIMER
 
@@ -18,6 +21,8 @@ public class countdown : MonoBehaviour
         if (timeLeft < 0)
         {
             Debug.Log("CHANGE ROOMS");
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("Room 2");
         }
     }
 

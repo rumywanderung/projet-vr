@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class deposable : MonoBehaviour
 {
-    private int points = 0;
-   
+    public Score score_manager;
+
+    
 
     #region COLLISION
 
@@ -13,8 +14,8 @@ public class deposable : MonoBehaviour
     {
         if (this.tag == "deposer" && collision.gameObject.tag == "deposer")
         {
-            points += 5;
-            Debug.Log(points);
+            score_manager.points += 5;
+            Debug.Log(score_manager.points);
         }
     }
 
@@ -22,8 +23,8 @@ public class deposable : MonoBehaviour
     {
         if (this.tag == "deposer" && collision.gameObject.tag == "deposer")
         {
-            points -= 5;
-            Debug.Log(points);
+            score_manager.points -= 5;
+            Debug.Log(score_manager.points);
         }
     }
 
