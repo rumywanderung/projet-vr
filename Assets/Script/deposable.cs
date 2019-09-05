@@ -6,8 +6,6 @@ public class deposable : MonoBehaviour
 {
     public Score score_manager;
 
-    
-
     #region COLLISION
 
     private void OnCollisionEnter(Collision collision)

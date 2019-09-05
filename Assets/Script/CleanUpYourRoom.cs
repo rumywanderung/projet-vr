@@ -18,11 +18,11 @@ public class CleanUpYourRoom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "trash")
+        if (other.tag == "jeter")
         {
             score_manager.points += 1;
             Destroy(other.gameObject);
-            Debug.Log(score_manager);
+            Debug.Log(score_manager.points);
         }
     }
 }

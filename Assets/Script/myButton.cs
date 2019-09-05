@@ -1,21 +1,17 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+using System;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
     public class ButtonEffect : MonoBehaviour
     {
-
-        public saySomething myScript;
-
         public void OnButtonDown(Hand fromHand)
         {
-            ColorSelf(Color.red);
-            Debug.Log(myScript.sayingSomething);
-
+            ColorSelf(Color.cyan);
             fromHand.TriggerHapticPulse(1000);
         }
 

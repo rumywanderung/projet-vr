@@ -7,7 +7,7 @@ TagManager:
   - projectile
   - FxTemporaire
   - deposer
-  - trash
+  - jeter
   layers:
   - Default
   - TransparentFX
