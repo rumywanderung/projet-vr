@@ -14,7 +14,7 @@ public class deposable : MonoBehaviour
     {
         if (this.tag == "deposer" && collision.gameObject.tag == "deposer")
         {
-            score_manager.points += 5;
+            score_manager.points += 1;
             Debug.Log(score_manager.points);
         }
     }
@@ -23,7 +23,7 @@ public class deposable : MonoBehaviour
     {
         if (this.tag == "deposer" && collision.gameObject.tag == "deposer")
         {
-            score_manager.points -= 5;
+            score_manager.points -= 1;
             Debug.Log(score_manager.points);
         }
     }

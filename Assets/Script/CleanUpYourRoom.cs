@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class CleanUpYourRoom : MonoBehaviour
 {
-    private bool present = false;
+    //private bool present = false;
     public Score score_manager;
 
-    private void OnTriggerStay(Collider other)
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "trash" && !present)
+    //    {
+    //        score_manager.points -= 1;
+    //        present = true;
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "trash" && !present)
+        if (other.tag == "trash")
         {
-            score_manager.points -= 1;
-            present = true;
+            score_manager.points += 1;
+            Destroy(other.gameObject);
+            Debug.Log(score_manager);
         }
     }
 }
