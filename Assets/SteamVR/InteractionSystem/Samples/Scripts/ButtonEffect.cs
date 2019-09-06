@@ -12,8 +12,8 @@ namespace Valve.VR.InteractionSystem.Sample
 
         public Player player;
         public Score score;
-        private GameObject timerRoom1; //durer durant room 1
-        private GameObject timer; //durer durant room 2
+        public GameObject timerRoom1; //durer durant room 1
+        public GameObject timer; //durer durant room 2
         
 
         public void OnButtonDown(Hand fromHand)
@@ -33,9 +33,10 @@ namespace Valve.VR.InteractionSystem.Sample
             if (this.tag == "inRoom1")
             {
                 //teleporter player from intro to room 1
+                timerRoom1 = Instantiate(Resources.Load("TIMERroom1", typeof(GameObject))) as GameObject;
+                timerRoom1.GetComponent<countdownROOM1>().score = score;
+                timerRoom1.GetComponent<countdownROOM1>().player = player;
                 Destroy(this.gameObject);
-                timerRoom1 = Instantiate(Resources.Load("/TIMERroom1")) as GameObject;
-                timerRoom1.GetComponent<countdown>().score = score; // FONCTIONNE PAS ENCORE
 
             }
 
@@ -43,10 +44,18 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 //teleporter player from room 1 to room 2
                 player.transform.position = new Vector3(848, 0, 11);
+                //timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
+                //timer.GetComponent<countdown>().score = score; 
                 Destroy(this.gameObject);
-                timer = Instantiate(Resources.Load("/TIMER")) as GameObject;
-                timer.GetComponent<countdown>().score = score; // FONCTIONNE PAS ENCORE
             }
+
+            if (this.tag == "inRoom2")
+            {
+                timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
+                timer.GetComponent<countdown>().score = score;
+                Destroy(this.gameObject);
+            }
+
 
         }
 

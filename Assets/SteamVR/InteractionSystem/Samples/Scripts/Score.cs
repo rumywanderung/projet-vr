@@ -11,7 +11,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
         void Start()
         {
-            Font myFont = (Font)Resources.Load("/fonts/digital-7", typeof(Font));
+            //Font myFont = (Font)Resources.Load("/fonts/digital-7", typeof(Font));
             myStyle.font = myFont;
             myStyle.normal.textColor = Color.green;
         }

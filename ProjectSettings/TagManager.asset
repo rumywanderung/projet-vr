@@ -12,6 +12,7 @@ TagManager:
   - introToRoom1
   - room1ToRoom2
   - inRoom1
+  - inRoom2
   layers:
   - Default
   - TransparentFX

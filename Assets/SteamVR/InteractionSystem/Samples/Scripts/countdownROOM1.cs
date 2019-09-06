@@ -11,6 +11,10 @@ namespace Valve.VR.InteractionSystem.Sample
         public float timeLeft;
         private AssetBundle myLoadedAssetBundle;
         private string[] scenePaths;
+        public Player player;
+        public Score score;
+        public GameObject timer; //durer durant room 2
+
 
 
         private void Update()
@@ -24,8 +28,9 @@ namespace Valve.VR.InteractionSystem.Sample
 
             if (timeLeft < 0)
             {
-                Debug.Log("CHANGE ROOMS");
-                SceneManager.LoadScene("Room 2");
+                player.transform.position = new Vector3(848, 0, 11);
+                timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
+                timer.GetComponent<ButtonEffect>().score = score; // FONCTIONNE PAS ENCORE
 
 
             }
