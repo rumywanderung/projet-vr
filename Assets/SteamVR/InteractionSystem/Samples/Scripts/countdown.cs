@@ -12,6 +12,7 @@ namespace Valve.VR.InteractionSystem.Sample
         private AssetBundle myLoadedAssetBundle;
         private string[] scenePaths;
         public Score score;
+        public Player player;
 
         #region TIMER
 
@@ -29,10 +30,11 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 Debug.Log("CHANGE ROOMS");
 
-                if (score.points < 14)
+                //if (score.points < 14)
+                if (score.points == 1)
                 {
                     Debug.Log("GAME OVER");
-                    // restart game
+                    player.transform.position = new Vector3(1293, 3, 31);
                 }
                 else
                 {

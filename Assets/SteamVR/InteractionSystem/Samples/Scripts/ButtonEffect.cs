@@ -53,6 +53,7 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
                 timer.GetComponent<countdown>().score = score;
+                timer.GetComponent<countdown>().player = player;
                 Destroy(this.gameObject);
             }
 
