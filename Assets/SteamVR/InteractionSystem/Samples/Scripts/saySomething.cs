@@ -13,5 +13,7 @@ namespace Valve.VR.InteractionSystem.Sample
         {
             sayingSomething = "AAAAAAAAAAAAAAA SCRIPT AAAAAAAAA";
         }
+        
+
     }
 }

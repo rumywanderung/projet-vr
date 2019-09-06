@@ -8,6 +8,10 @@ TagManager:
   - FxTemporaire
   - deposer
   - jeter
+  - popup
+  - introToRoom1
+  - room1ToRoom2
+  - inRoom1
   layers:
   - Default
   - TransparentFX
