@@ -18,7 +18,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
         void OnGUI()
         {
-            GUI.Label(new Rect(500, 20, 300, 300), "SCORE : " + points.ToString() + "/14", myStyle);
+            GUI.Label(new Rect(460, 20, 300, 300), "SCORE : " + points.ToString() + "/12", myStyle);
         }
     }
 }

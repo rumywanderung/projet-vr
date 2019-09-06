@@ -13,6 +13,13 @@ TagManager:
   - room1ToRoom2
   - inRoom1
   - inRoom2
+  - dress
+  - alteres
+  - mag
+  - pizza
+  - fruit
+  - glass
+  - trophy
   layers:
   - Default
   - TransparentFX
@@ -49,4 +56,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CAMERA
+    uniqueID: 2616944229
     locked: 0
