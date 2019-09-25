@@ -25,14 +25,14 @@ namespace Valve.VR.InteractionSystem.Sample
 
         private GameObject touched;
         private GameObject grabed;
-        private bool ragdoll_touched;
+        private bool objects_touched;
 
         public Vector3 origin_offset = new Vector3();
         public float max_distance_to_grab = 1000;
 
         Transform previousContact = null;
 
-        // everyhting for ragdoll
+        // everyhting for objects
         private Rigidbody touched_rigibody;
         private Vector3 touched_point;
         public float force = 600;
@@ -42,7 +42,7 @@ namespace Valve.VR.InteractionSystem.Sample
         private void Start()
         {
 
-            ragdoll_touched = false;
+            objects_touched = false;
 
             holder = new GameObject();
             holder.transform.parent = this.transform;
@@ -126,13 +126,12 @@ namespace Valve.VR.InteractionSystem.Sample
             return go.transform;
         }
 
-
         private void OnTriggerPressedOrReleased(SteamVR_Action_Boolean action_In, SteamVR_Input_Sources sources, bool newstate)
         {
             if (newstate && touched != null)
             {
                 grabed = touched;
-                if (!ragdoll_touched)
+                if (!objects_touched)
                 {
                     grabed.transform.SetParent(this.transform);
                 }
@@ -143,7 +142,7 @@ namespace Valve.VR.InteractionSystem.Sample
             }
             else if (!newstate && grabed != null)
             {
-                if (!ragdoll_touched)
+                if (!objects_touched)
                 {
                     grabed.transform.SetParent(null);
                 }
@@ -154,20 +153,17 @@ namespace Valve.VR.InteractionSystem.Sample
                 grabed = null;
             }
         }
-
-
-
+        
         private void Update()
         {
 
-
-            if (grabed != null && !ragdoll_touched)
+            if (grabed != null && !objects_touched)
             {
                 grabed.transform.localPosition = Vector3.zero;
                 grabed.transform.localRotation = Quaternion.identity;
                 grabed.transform.localPosition = origin_offset;
             }
-            else if (grabed != null && ragdoll_touched)
+            else if (grabed != null && objects_touched)
             {
                 jointTrans.position = this.transform.position + this.transform.rotation * origin_offset;
             }
@@ -186,15 +182,24 @@ namespace Valve.VR.InteractionSystem.Sample
                 if (hit.distance <= max_distance_to_grab)
                 {
                     string tag = hit.transform.gameObject.tag;
-                    if ((tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter") && grabed == null)
+                    if ((tag == "introToRoom1" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter") && grabed == null)
                     {
                         touched = hit.transform.gameObject;
                         touched_rigibody = hit.rigidbody;
                         touched_point = hit.point;
-                        ragdoll_touched = (tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter");
-                        Debug.Log(ragdoll_touched);
+                        objects_touched = (tag == "introToRoom1" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter");
+                        Debug.Log(objects_touched);
                         pointer.GetComponent<MeshRenderer>().material.color = highlightColor;
+
+                        if (touched.tag == "introToRoom1")
+                        {
+                            Debug.Log("we got here");
+                            this.GetComponentInParent<GameObject>().transform.position = new Vector3(77, -121, -2);
+                            Destroy(touched.gameObject);
+                        }
                     }
+
+                    
                 }
             }
 

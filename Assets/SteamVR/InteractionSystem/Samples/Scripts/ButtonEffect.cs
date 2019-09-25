@@ -18,12 +18,11 @@ namespace Valve.VR.InteractionSystem.Sample
 
         public void OnButtonDown(Hand fromHand)
         {
-            ColorSelf(Color.red);
-            fromHand.TriggerHapticPulse(1000);
 
      
             if (this.tag == "introToRoom1")
             {
+                ColorSelf(Color.red);
                 //teleporter player from intro to room 1
                 player.transform.position = new Vector3(77, -121, -2);
                 Destroy(this.gameObject);
