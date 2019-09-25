@@ -25,7 +25,7 @@ namespace Valve.VR.InteractionSystem.Sample
             if (this.tag == "introToRoom1")
             {
                 //teleporter player from intro to room 1
-                player.transform.position = new Vector3(447, 0, 11);
+                player.transform.position = new Vector3(77, -121, -2);
                 Destroy(this.gameObject);
 
             }
@@ -43,7 +43,7 @@ namespace Valve.VR.InteractionSystem.Sample
             if (this.tag == "room1ToRoom2")
             {
                 //teleporter player from room 1 to room 2
-                player.transform.position = new Vector3(848, 0, 11);
+                player.transform.position = new Vector3(836, 0, 11);
                 //timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
                 //timer.GetComponent<countdown>().score = score; 
                 Destroy(this.gameObject);

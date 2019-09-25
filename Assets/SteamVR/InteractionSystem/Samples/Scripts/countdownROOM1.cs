@@ -28,7 +28,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
             if (timeLeft < 0)
             {
-                player.transform.position = new Vector3(848, 0, 11);
+                player.transform.position = new Vector3(836, 0, 11);
                 timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
                 timer.GetComponent<ButtonEffect>().score = score; // FONCTIONNE PAS ENCORE
 
