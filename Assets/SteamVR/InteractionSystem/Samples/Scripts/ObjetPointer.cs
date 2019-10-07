@@ -12,6 +12,8 @@ namespace Valve.VR.InteractionSystem.Sample
     {
         //public SteamVR_Behaviour_Pose pose;
 
+        public GameObject player;
+
         public SteamVR_Action_Boolean grabPinch;
         public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
 
@@ -130,27 +132,37 @@ namespace Valve.VR.InteractionSystem.Sample
         {
             if (newstate && touched != null)
             {
-                grabed = touched;
-                if (!objects_touched)
+                if (touched.gameObject.tag == "introToRoom1")
                 {
-                    grabed.transform.SetParent(this.transform);
+                    player.transform.position = new Vector3(442, 0, 12);
+                    Debug.Log("trigger pressed");
+                    grabed = null;
                 }
                 else
                 {
-                    jointTrans = AttachJoint(touched_rigibody, touched_point);
-                }
-            }
-            else if (!newstate && grabed != null)
-            {
-                if (!objects_touched)
-                {
-                    grabed.transform.SetParent(null);
-                }
-                else
-                {
-                    Destroy(jointTrans.gameObject);
-                }
-                grabed = null;
+                    grabed = touched;
+                    if (!objects_touched)
+                    {
+                        grabed.transform.SetParent(this.transform);
+                    }
+                    else
+                    {
+                        jointTrans = AttachJoint(touched_rigibody, touched_point);
+                    }
+                     }
+                    if (!newstate && grabed != null)
+                        {
+                            if (!objects_touched)
+                                {
+                                     grabed.transform.SetParent(null);
+                                }
+                            else
+                                {
+                                     Destroy(jointTrans.gameObject);
+                                }
+                        grabed = null;
+                        }
+
             }
         }
         
@@ -187,16 +199,16 @@ namespace Valve.VR.InteractionSystem.Sample
                         touched = hit.transform.gameObject;
                         touched_rigibody = hit.rigidbody;
                         touched_point = hit.point;
-                        objects_touched = (tag == "introToRoom1" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter");
-                        Debug.Log(objects_touched);
+                        objects_touched = (tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter");
+                        Debug.Log("bhit");
                         pointer.GetComponent<MeshRenderer>().material.color = highlightColor;
 
-                        if (touched.tag == "introToRoom1")
+                        /*if (tag == "introToRoom1")
                         {
-                            Debug.Log("we got here");
-                            this.GetComponentInParent<GameObject>().transform.position = new Vector3(77, -121, -2);
-                            Destroy(touched.gameObject);
-                        }
+                            //Debug.Log("we got here");
+                            //player.transform.position = new Vector3(77, -121, -2);
+                            //Destroy(touched.gameObject);
+                        }*/
                     }
 
                     
