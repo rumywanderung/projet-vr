@@ -31,15 +31,15 @@ namespace Valve.VR.InteractionSystem.Sample
                 Debug.Log("CHANGE ROOMS");
 
                 //if (score.points < 14)
-                if (score.points == 12)
+                if (score.points < 12)
                 {
                     Debug.Log("GAME OVER");
-                    player.transform.position = new Vector3(1293, 3, 31);
+                    player.transform.position = new Vector3(1288, 0, 12);
                 }
                 else
                 {
                     Debug.Log("YOU WIN");
-                    //elle sera faite ultérieurement
+                    player.transform.position = new Vector3(1897, 0, 58);
                 }
                 
             }

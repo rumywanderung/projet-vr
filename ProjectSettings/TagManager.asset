@@ -16,10 +16,17 @@ TagManager:
   - dress
   - alteres
   - mag
-  - pizza
   - fruit
   - glass
   - trophy
+  - Ddress
+  - Dalteres
+  - Dmag
+  - Dfruit
+  - Dglass
+  - Dtrophy
+  - Dpic
+  - pic
   layers:
   - Default
   - TransparentFX

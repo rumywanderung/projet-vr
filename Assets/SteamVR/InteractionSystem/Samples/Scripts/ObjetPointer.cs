@@ -141,9 +141,14 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 if (touched.gameObject.tag == "inRoom1")
                 {
-                    timerRoom1 = Instantiate(Resources.Load("TIMERroom1", typeof(GameObject))) as GameObject;
+                    /*timerRoom1 = Instantiate(Resources.Load("TIMERroom1", typeof(GameObject))) as GameObject;
                     timerRoom1.GetComponent<countdownROOM1>().score = score;
-                    timerRoom1.GetComponent<countdownROOM1>().player = player;
+                    timerRoom1.GetComponent<countdownROOM1>().player = player;*/
+                    player.transform.position = new Vector3(835, 0, 13);
+                    timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
+                    timer.GetComponent<countdown>().score = score;
+                    timer.GetComponent<countdown>().player = player;
+
                     Destroy(touched.GetComponent<PopUp>().canvas);
                     Destroy(touched.gameObject);
                     Debug.Log("inRoom1 trigger pressed");
@@ -159,7 +164,7 @@ namespace Valve.VR.InteractionSystem.Sample
                     grabed = null;
                 }
 
-                else if (touched.gameObject.tag == "inRoom2")
+                /*else if (touched.gameObject.tag == "inRoom2")
                 {
                     timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
                     timer.GetComponent<countdown>().score = score;
@@ -168,9 +173,9 @@ namespace Valve.VR.InteractionSystem.Sample
                     Destroy(touched.gameObject);
                     Debug.Log("inRoom2 trigger pressed");
                     grabed = null;
-                }
+                }*/
 
-                else if (touched.gameObject.tag == "dress" && grabed == null)
+                else if (touched.gameObject.tag == "dress" || touched.gameObject.tag == "alteres" || touched.gameObject.tag == "mag" || touched.gameObject.tag == "glass" || touched.gameObject.tag == "fruit" || touched.gameObject.tag == "trophy" || touched.gameObject.tag == "pic" || touched.gameObject.tag == "jeter" && grabed == null)
                 {
                     grabed = touched;
                     grabed.transform.SetParent(this.transform);
@@ -216,7 +221,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 if (hit.distance <= max_distance_to_grab)
                 {
                     string tag = hit.transform.gameObject.tag;
-                    if ((tag == "introToRoom1" || tag == "inRoom1" || tag == "inRoom2" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter") && grabed == null)
+                    if ((tag == "introToRoom1" || tag == "inRoom1" || tag == "inRoom2" || tag == "dress" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "pic" || tag == "jeter") && grabed == null)
                     {
                         touched = hit.transform.gameObject;
                         /*touched_rigibody = hit.rigidbody;

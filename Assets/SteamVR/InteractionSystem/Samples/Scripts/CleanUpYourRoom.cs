@@ -26,6 +26,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 score_manager.points += 1;
                 Destroy(other.gameObject);
                 Debug.Log(score_manager.points);
+                Debug.Log("Objet jeté!");
             }
         }
     }
