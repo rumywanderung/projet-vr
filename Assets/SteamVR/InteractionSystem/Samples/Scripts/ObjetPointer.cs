@@ -12,7 +12,7 @@ namespace Valve.VR.InteractionSystem.Sample
     {
         //public SteamVR_Behaviour_Pose pose;
 
-        public GameObject player;
+        public Player player;
 
         public SteamVR_Action_Boolean grabPinch;
         public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
@@ -41,6 +41,10 @@ namespace Valve.VR.InteractionSystem.Sample
         public float damping = 6;
         Transform jointTrans;
 
+        public GameObject timerRoom1; //durer durant room 1
+        public GameObject timer; //durer durant room 2
+        public Score score;
+
         private void Start()
         {
 
@@ -57,7 +61,6 @@ namespace Valve.VR.InteractionSystem.Sample
             pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
             pointer.transform.localRotation = Quaternion.identity;
             BoxCollider collider = pointer.GetComponent<BoxCollider>();
-
 
             if (addRigidBody)
             {
@@ -97,7 +100,7 @@ namespace Valve.VR.InteractionSystem.Sample
             }
         }
 
-        private JointDrive NewJointDrive(float force, float damping)
+      /*  private JointDrive NewJointDrive(float force, float damping)
         {
             JointDrive drive = new JointDrive();
             drive.mode = JointDriveMode.Position;
@@ -126,45 +129,64 @@ namespace Valve.VR.InteractionSystem.Sample
             joint.rotationDriveMode = RotationDriveMode.Slerp;
 
             return go.transform;
-        }
+        }*/
 
         private void OnTriggerPressedOrReleased(SteamVR_Action_Boolean action_In, SteamVR_Input_Sources sources, bool newstate)
         {
+            Debug.Log(newstate);
+            Debug.Log(touched);
+            Debug.Log("function OnTriggerPress");
+
             if (newstate && touched != null)
             {
-                if (touched.gameObject.tag == "introToRoom1")
+                if (touched.gameObject.tag == "inRoom1")
                 {
-                    player.transform.position = new Vector3(442, 0, 12);
-                    Debug.Log("trigger pressed");
+                    timerRoom1 = Instantiate(Resources.Load("TIMERroom1", typeof(GameObject))) as GameObject;
+                    timerRoom1.GetComponent<countdownROOM1>().score = score;
+                    timerRoom1.GetComponent<countdownROOM1>().player = player;
+                    Destroy(touched.GetComponent<PopUp>().canvas);
+                    Destroy(touched.gameObject);
+                    Debug.Log("inRoom1 trigger pressed");
                     grabed = null;
                 }
-                else
+
+                else if (touched.gameObject.tag == "introToRoom1")
+                {
+                    player.transform.position = new Vector3(442, 0, 12);
+                    Debug.Log("intro trigger pressed");
+                    Destroy(touched.GetComponent<PopUp>().canvas);
+                    Destroy(touched.gameObject);
+                    grabed = null;
+                }
+
+                else if (touched.gameObject.tag == "inRoom2")
+                {
+                    timer = Instantiate(Resources.Load("TIMER", typeof(GameObject))) as GameObject;
+                    timer.GetComponent<countdown>().score = score;
+                    timer.GetComponent<countdown>().player = player;
+                    Destroy(touched.GetComponent<PopUp>().canvas);
+                    Destroy(touched.gameObject);
+                    Debug.Log("inRoom2 trigger pressed");
+                    grabed = null;
+                }
+
+                else if (touched.gameObject.tag == "dress" && grabed == null)
                 {
                     grabed = touched;
-                    if (!objects_touched)
-                    {
-                        grabed.transform.SetParent(this.transform);
-                    }
-                    else
-                    {
-                        jointTrans = AttachJoint(touched_rigibody, touched_point);
-                    }
-                     }
-                    if (!newstate && grabed != null)
-                        {
-                            if (!objects_touched)
-                                {
-                                     grabed.transform.SetParent(null);
-                                }
-                            else
-                                {
-                                     Destroy(jointTrans.gameObject);
-                                }
-                        grabed = null;
-                        }
-
+                    grabed.transform.SetParent(this.transform);
+                    Debug.Log(touched);
+                    Debug.Log(grabed);
+                }
+            }
+            else if (!newstate && grabed != null)
+            {
+                grabed.transform.SetParent(null);
+                grabed = null;
+                Debug.Log(touched);
+                Debug.Log(grabed);
             }
         }
+
         
         private void Update()
         {
@@ -175,10 +197,10 @@ namespace Valve.VR.InteractionSystem.Sample
                 grabed.transform.localRotation = Quaternion.identity;
                 grabed.transform.localPosition = origin_offset;
             }
-            else if (grabed != null && objects_touched)
+           /* else if (grabed != null && objects_touched)
             {
                 jointTrans.position = this.transform.position + this.transform.rotation * origin_offset;
-            }
+            }*/
 
 
             touched = null;
@@ -194,13 +216,13 @@ namespace Valve.VR.InteractionSystem.Sample
                 if (hit.distance <= max_distance_to_grab)
                 {
                     string tag = hit.transform.gameObject.tag;
-                    if ((tag == "introToRoom1" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter") && grabed == null)
+                    if ((tag == "introToRoom1" || tag == "inRoom1" || tag == "inRoom2" || tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter") && grabed == null)
                     {
                         touched = hit.transform.gameObject;
-                        touched_rigibody = hit.rigidbody;
+                        /*touched_rigibody = hit.rigidbody;
                         touched_point = hit.point;
                         objects_touched = (tag == "dress" || tag == "pizza" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "jeter");
-                        Debug.Log("bhit");
+                        Debug.Log("bhit");*/
                         pointer.GetComponent<MeshRenderer>().material.color = highlightColor;
 
                         /*if (tag == "introToRoom1")

@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2056fc4c5d013df4198fce2c40731e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 20
+  timeLeft: 10
   player: {fileID: 0}
   score: {fileID: 0}
   timer: {fileID: 0}
