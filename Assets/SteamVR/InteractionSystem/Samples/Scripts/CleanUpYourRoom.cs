@@ -28,6 +28,13 @@ namespace Valve.VR.InteractionSystem.Sample
                 Debug.Log(score_manager.points);
                 Debug.Log("Objet jeté!");
             }
+
+            else if (other.tag == "dress" || other.tag == "alteres" || other.tag == "mag" || other.tag == "glass" || other.tag == "trophy" || other.tag == "pic")
+            {
+                
+                Destroy(other.gameObject);
+                Debug.Log("MAUVAIS OBJET DETRUIT NOOOOOOOO");
+            }
         }
     }
 }

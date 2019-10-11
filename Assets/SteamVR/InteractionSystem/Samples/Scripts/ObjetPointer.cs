@@ -175,7 +175,7 @@ namespace Valve.VR.InteractionSystem.Sample
                     grabed = null;
                 }*/
 
-                else if (touched.gameObject.tag == "dress" || touched.gameObject.tag == "alteres" || touched.gameObject.tag == "mag" || touched.gameObject.tag == "glass" || touched.gameObject.tag == "fruit" || touched.gameObject.tag == "trophy" || touched.gameObject.tag == "pic" || touched.gameObject.tag == "jeter" && grabed == null)
+                else if (touched.gameObject.tag == "dress" || touched.gameObject.tag == "alteres" || touched.gameObject.tag == "mag" || touched.gameObject.tag == "glass" || touched.gameObject.tag == "trophy" || touched.gameObject.tag == "pic" || touched.gameObject.tag == "jeter" && grabed == null)
                 {
                     grabed = touched;
                     grabed.transform.SetParent(this.transform);
@@ -221,7 +221,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 if (hit.distance <= max_distance_to_grab)
                 {
                     string tag = hit.transform.gameObject.tag;
-                    if ((tag == "introToRoom1" || tag == "inRoom1" || tag == "inRoom2" || tag == "dress" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "fruit" || tag == "trophy" || tag == "pic" || tag == "jeter") && grabed == null)
+                    if ((tag == "introToRoom1" || tag == "inRoom1" || tag == "inRoom2" || tag == "dress" || tag == "alteres" || tag == "mag" || tag == "glass" || tag == "trophy" || tag == "pic" || tag == "jeter") && grabed == null)
                     {
                         touched = hit.transform.gameObject;
                         /*touched_rigibody = hit.rigidbody;
