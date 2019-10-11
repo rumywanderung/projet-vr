@@ -6406,7 +6406,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: LET'S HACK
+  m_Text: OK
 --- !u!222 &926354081
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10140,7 +10140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19ba629d82b98e64aa6a294feaad1751, type: 2}
+  - {fileID: 2100000, guid: 4b2e4fa9ec9775748830c87a8b21fe7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
